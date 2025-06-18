@@ -26,4 +26,4 @@ implementing ones and twos complement to do subtraction
     5 -2 --> 5 + 2s(2)
 
 
-
+~n = -(n+1)
