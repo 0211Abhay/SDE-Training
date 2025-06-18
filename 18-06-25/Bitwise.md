@@ -1,3 +1,6 @@
+
+
+````markdown
 # 📘 C++ Bitwise Operators - Quick Reference
 
 This document provides a summary of C++ Bitwise Operators, as referenced from [GeeksforGeeks](https://www.geeksforgeeks.org/cpp/cpp-bitwise-operators/). Bitwise operators operate on bits and perform bit-by-bit operations.
@@ -41,9 +44,10 @@ int main() {
 
     return 0;
 }
-```
+````
 
 **Output:**
+
 ```
 x & y = 1
 x | y = 13
@@ -60,12 +64,14 @@ y >> 1 = 4
 Here are some common tricks using bitwise operators that are frequently used in competitive programming and system-level code:
 
 ### 1. **Check if a number is even or odd**
+
 ```cpp
 if (x & 1) cout << "Odd";
 else cout << "Even";
 ```
 
 ### 2. **Swap two numbers without a temporary variable**
+
 ```cpp
 a = a ^ b;
 b = a ^ b;
@@ -73,31 +79,37 @@ a = a ^ b;
 ```
 
 ### 3. **Check if a number is a power of 2**
+
 ```cpp
 bool isPowerOfTwo = (n > 0) && ((n & (n - 1)) == 0);
 ```
 
 ### 4. **Clear the ith bit**
+
 ```cpp
 x = x & (~(1 << i));
 ```
 
 ### 5. **Set the ith bit**
+
 ```cpp
 x = x | (1 << i);
 ```
 
 ### 6. **Toggle the ith bit**
+
 ```cpp
 x = x ^ (1 << i);
 ```
 
 ### 7. **Get the ith bit**
+
 ```cpp
 int bit = (x >> i) & 1;
 ```
 
 ### 8. **Count number of set bits (Hamming Weight)**
+
 ```cpp
 int count = 0;
 while (x) {
@@ -105,6 +117,40 @@ while (x) {
     x >>= 1;
 }
 ```
+
+### 9. **Left Shift and Right Shift in Base-x**
+
+Bitwise shifts have a mathematical interpretation in any numeric base `x` (commonly base 2):
+
+* **Left Shift (`a << b`)**
+  Equivalent to multiplying `a` by `x^b`:
+
+  ```
+  a << b ≡ a × x^b
+  ```
+
+  In base 2:
+
+  ```cpp
+  int a = 3, b = 2;
+  int result = a << b; // 3 × 2^2 = 12
+  ```
+
+* **Right Shift (`a >> b`)**
+  Equivalent to performing `floor(a / x^b)`:
+
+  ```
+  a >> b ≡ floor(a / x^b)
+  ```
+
+  In base 2:
+
+  ```cpp
+  int a = 19, b = 2;
+  int result = a >> b; // floor(19 / 2^2) = 4
+  ```
+
+These interpretations help connect binary shifts to arithmetic scaling, which is often useful for writing optimized and readable code.
 
 ---
 
@@ -114,10 +160,10 @@ De Morgan’s Laws describe how logical expressions involving NOT, AND, and OR c
 
 ### Laws:
 
-1. **NOT (A AND B) = (NOT A) OR (NOT B)**  
+1. **NOT (A AND B) = (NOT A) OR (NOT B)**
    `~(A & B) = (~A | ~B)`
 
-2. **NOT (A OR B) = (NOT A) AND (NOT B)**  
+2. **NOT (A OR B) = (NOT A) AND (NOT B)**
    `~(A | B) = (~A & ~B)`
 
 ### Example:
@@ -158,3 +204,6 @@ cout << "(~A | ~B) = " << ((~A) | (~B)) << endl;
 * De Morgan’s Laws
 * Data Structures (like Trie, Segment Trees using bits)
 * Bit Manipulation Tricks
+
+```
+
