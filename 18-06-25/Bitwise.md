@@ -18,7 +18,7 @@ Bitwise operators are used for performing operations on binary representations o
 | Operator | Name           | Description                                             | Example (x = 5, y = 9) |
 |----------|----------------|---------------------------------------------------------|------------------------|
 | `&`      | Bitwise AND    | Each bit of result is 1 if both corresponding bits are 1| `x & y` = 1            |
-| `\|`      | Bitwise OR     | Each bit of result is 1 if at least one bit is 1       | `x \| y` = 13           |
+| `|`      | Bitwise OR     | Each bit of result is 1 if at least one bit is 1       | `x | y` = 13           |
 | `^`      | Bitwise XOR    | Each bit of result is 1 if bits are different          | `x ^ y` = 12           |
 | `~`      | Bitwise NOT    | Inverts all bits                                        | `~x` = -6              |
 | `<<`     | Left Shift     | Shifts bits left and fills 0 on the right              | `x << 1` = 10          |
