@@ -8,7 +8,7 @@ Here's your updated `README.md` with the **Left Shift and Right Shift in Base-x*
 This document provides a summary of C++ Bitwise Operators, as referenced from [GeeksforGeeks](https://www.geeksforgeeks.org/cpp/cpp-bitwise-operators/). Bitwise operators operate on bits and perform bit-by-bit operations.
 
 ---
-
+---
 ## 🧠 What Are Bitwise Operators?
 
 Bitwise operators are used for performing operations on binary representations of integers. These are low-level operations and are especially useful in systems programming, competitive coding, and embedded systems.
