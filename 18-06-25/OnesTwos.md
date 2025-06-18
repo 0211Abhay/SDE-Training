@@ -1,4 +1,6 @@
+Here's the **corrected and cleaned-up version** of your `README.md` with proper formatting and consistency:
 
+---
 
 ```markdown
 # 🧮 1's & 2's Complement - Binary Arithmetic Reference
@@ -44,8 +46,8 @@ In Boolean algebra (especially in digital circuits), **negative numbers** are of
 
 ### Example:
 To represent `-5` in 4-bit:
-1. Take binary of `5`: `0101`
-2. 1's complement: `1010`
+1. Take binary of `5`: `0101`  
+2. 1's complement: `1010`  
 3. Add 1 → 2's complement: `1011` = `-5`
 
 ---
@@ -68,12 +70,12 @@ A - B = A + 2’s\_complement(B)
 2. Binary of `2` = `0010`  
 3. 1’s complement of `2` = `1101`  
 4. 2’s complement of `2` = `1110`  
-5. Add:  
+5. Add:
 ```
 
-0101 (5)
+0101
 
-* 1110 (-2)
+* 1110
 
 ---
 
@@ -91,7 +93,7 @@ A - B = A + 2’s\_complement(B)
 1. Binary of `2` = `0010`  
 2. Binary of `5` = `0101`  
 3. 2’s complement of `5` = `1011`  
-4. Add:  
+4. Add:
 ```
 
 0010
@@ -120,29 +122,29 @@ This is a **negative result**, and since it’s in 2’s complement:
 using namespace std;
 
 int toTwosComplement(int n, int bits) {
- if (n >= 0) return n;
- int mask = (1 << bits) - 1;
- return ((~(-n)) + 1) & mask;
+    if (n >= 0) return n;
+    int mask = (1 << bits) - 1;
+    return ((~(-n)) + 1) & mask;
 }
 
 int main() {
- int a = 5, b = -2;
- int bits = 4;
+    int a = 5, b = -2;
+    int bits = 4;
 
- int a_bin = toTwosComplement(a, bits);
- int b_bin = toTwosComplement(b, bits);
+    int a_bin = toTwosComplement(a, bits);
+    int b_bin = toTwosComplement(b, bits);
 
- int result = (a_bin + b_bin) & ((1 << bits) - 1);
+    int result = (a_bin + b_bin) & ((1 << bits) - 1);
 
- cout << "Result (binary): " << bitset<4>(result) << endl;
+    cout << "Result (binary): " << bitset<4>(result) << endl;
 
- // Interpret result in decimal (manual step to show negative)
- if ((result >> (bits - 1)) & 1) {
-     result = -((~result + 1) & ((1 << bits) - 1));
- }
+    // Interpret result in decimal (manual step to show negative)
+    if ((result >> (bits - 1)) & 1) {
+        result = -((~result + 1) & ((1 << bits) - 1));
+    }
 
- cout << "Result (decimal): " << result << endl;
- return 0;
+    cout << "Result (decimal): " << result << endl;
+    return 0;
 }
 ````
 
@@ -150,7 +152,7 @@ int main() {
 
 ## 🧩 Notes
 
-* 1’s complement has two representations of 0 (`0000` and `1111`) → not used in modern systems.
+* 1’s complement has **two representations of 0** (`0000` and `1111`) → not used in modern systems.
 * 2’s complement is widely adopted in modern hardware.
 * Overflow can occur if the result exceeds the fixed bit width.
 
@@ -175,3 +177,5 @@ int main() {
 
 ---
 
+Let me know if you’d like this exported into a `.md` file, turned into a PDF, or added to an existing documentation project.
+```

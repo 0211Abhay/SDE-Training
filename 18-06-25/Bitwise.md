@@ -1,3 +1,4 @@
+Here's your updated `README.md` with the **Left Shift and Right Shift in Base-x** section seamlessly added as **item 9** under **Bitwise Operator Tricks & Applications**:
 
 ---
 
