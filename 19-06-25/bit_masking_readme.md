@@ -19,7 +19,7 @@ Bit masking involves using **bitwise operators** to **set, clear, toggle, or che
 | Operator | Symbol | Description                      |
 |----------|--------|----------------------------------|
 | AND      | `&`    | Both bits must be 1              |
-| OR       | `|`    | Either bit is 1                  |
+| OR       | `\|`    | Either bit is 1                  |
 | XOR      | `^`    | One bit must be 1                |
 | NOT      | `~`    | Inverts bits                     |
 | Left Shift | `<<` | Shifts bits to the left (×2)     |
