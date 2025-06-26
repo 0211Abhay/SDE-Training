@@ -10,7 +10,7 @@ int main() {
 
     // Precompute all a^3 + b^3 for a <= b and store their pairs
     for (int a = 1; a * a * a < LIMIT; ++a) {
-        for (int b = a; ; ++b) {
+        for (int b = a;a*a*a + b*b*b< LIMIT ; ++b) {
             int sum = a*a*a + b*b*b;
             if (sum >= LIMIT) break;
             cubeSums[sum].emplace_back(a, b);

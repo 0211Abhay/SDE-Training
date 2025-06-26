@@ -81,7 +81,7 @@ void solve()
 {   
     cout << floor(log2(43));
     
-    count_set_bits();   
+    TrackLeading1sO1();   
 }
 
 int main()
