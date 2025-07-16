@@ -29,52 +29,37 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-bool isEven(int n)
+void print_stack(stack<int> s)
 {
-    return !(n & 1);
-}
-
-bool isPowerOf2(int n)
-{
-    // return !(n & (n - 1));
-    return !((1 << 30) % n);
-}
-
-int count_bits(int n)
-{
-    if (n < 0)
+    while (!s.empty())
     {
-        return 32;
+        cout << s.top() << "\t";
+        s.pop();
     }
-    int count = 0;
-    while (n)
-    {
-        // cout << n << "\n";
-        n >>= 1;
-        count++;
-    }
-    return count;
+    cout << "\n";
 }
 
-int count_set_bits(int n)
+vi get_ngi(vi &v)
 {
-    int count = 0;
-    while (n > 0)
+    stack<int> s;
+    vector<int> res(v.size());
+    for (int i = v.size() - 1; i >= 0; i--)
     {
-        if ((n & 1) == 1)
+        while (!s.empty() && v[s.top()] <= v[i])
         {
-            count++;
+            s.pop();
         }
-        n >>= 1;
+        res[i] = s.empty() ? -1 : s.top();
+        s.push(i);
     }
-    return count;
+    return res;
 }
 
 void solve()
 {
-    int n;
-    cin >> n;
-    cout << count_set_bits(n) << "\n";
+    vi v = input_vector();
+    vi nge = get_ngi(v);
+    print_vec(nge);
 }
 
 int main()
