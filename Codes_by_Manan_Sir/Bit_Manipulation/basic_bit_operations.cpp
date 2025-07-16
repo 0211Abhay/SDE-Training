@@ -29,52 +29,16 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-bool isEven(int n)
+int isEven(int n)
 {
-    return !(n & 1);
-}
-
-bool isPowerOf2(int n)
-{
-    // return !(n & (n - 1));
-    return !((1 << 30) % n);
-}
-
-int count_bits(int n)
-{
-    if (n < 0)
-    {
-        return 32;
-    }
-    int count = 0;
-    while (n)
-    {
-        // cout << n << "\n";
-        n >>= 1;
-        count++;
-    }
-    return count;
-}
-
-int count_set_bits(int n)
-{
-    int count = 0;
-    while (n > 0)
-    {
-        if ((n & 1) == 1)
-        {
-            count++;
-        }
-        n >>= 1;
-    }
-    return count;
+    return ~(n & 1);
 }
 
 void solve()
 {
     int n;
     cin >> n;
-    cout << count_set_bits(n) << "\n";
+    cout << isEven(n) << "\n";
 }
 
 int main()
