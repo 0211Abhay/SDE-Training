@@ -29,52 +29,36 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-bool isEven(int n)
+void populate(stack<int> &s)
 {
-    return !(n & 1);
+    forn(i, 3)
+    {
+        s.push(i + 1);
+    }
 }
 
-bool isPowerOf2(int n)
+void print_stack(stack<int> s)
 {
-    // return !(n & (n - 1));
-    return !((1 << 30) % n);
-}
-
-int count_bits(int n)
-{
-    if (n < 0)
+    while (!s.empty())
     {
-        return 32;
+        cout << s.top() << "\t";
+        s.pop();
     }
-    int count = 0;
-    while (n)
-    {
-        // cout << n << "\n";
-        n >>= 1;
-        count++;
-    }
-    return count;
-}
-
-int count_set_bits(int n)
-{
-    int count = 0;
-    while (n > 0)
-    {
-        if ((n & 1) == 1)
-        {
-            count++;
-        }
-        n >>= 1;
-    }
-    return count;
+    cout << "\n";
 }
 
 void solve()
 {
-    int n;
-    cin >> n;
-    cout << count_set_bits(n) << "\n";
+    stack<int> s1, s2;
+    populate(s1);
+    forn(i, 3)
+    {
+        s2.push(i + 4);
+    }
+    // swap(s1, s2);
+    s1.swap(s2);
+    print_stack(s1);
+    print_stack(s2);
 }
 
 int main()
