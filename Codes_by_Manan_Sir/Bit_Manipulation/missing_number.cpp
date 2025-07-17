@@ -29,17 +29,26 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+int missing_num(vi &v)
+{
+    int n = v.size();
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        ans ^= (v[i] ^ (i + 1));
+        // ans ^= (i + 1);l
+    }
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     ans ^= i;
+    // }
+    return ans;
+}
+
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    vi v = input_vector();
+    cout << missing_num(v) << "\n";
 }
 
 int main()

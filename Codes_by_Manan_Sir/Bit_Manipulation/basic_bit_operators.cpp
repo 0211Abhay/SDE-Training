@@ -28,21 +28,57 @@ void print_vec(vi &v)
     }
     cout << "\n";
 }
-// faster way of doing fib.
-int fibonacci(int n)
+
+int count_bits(int n)
 {
-    if (n < 2)
+    int count = 0;
+    while (n > 0)
     {
-        return n;
+        count++;
+        n >>= 1;
     }
-    return fibonacci(n - 1) + fibonacci(n - 2);
+    return count;
+}
+
+int count_set_bits(int n)
+{
+    int count = 0;
+    while (n > 0)
+    {
+        if (n & 1 == 1)
+        {
+            count++;
+        }
+        n >>= 1;
+    }
+    return count;
+}
+
+int msb(int n)
+{
+    return count_bits(n) - 1;
+}
+
+int lsb(int n)
+{
+    int index = 0;
+    while (n > 0)
+    {
+        if (n & 1)
+        {
+            return index;
+        }
+        index++;
+        n >>= 1;
+    }
+    return -1;
 }
 
 void solve()
 {
     int n;
     cin >> n;
-    cout << fibonacci(n) << "\n";
+    cout << msb(n) << "\t" << lsb(n) << "\n";
 }
 
 int main()

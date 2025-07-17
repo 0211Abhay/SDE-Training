@@ -6,7 +6,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<string> vs;
 typedef map<int, int> mii;
-typedef unordered_map<int, int> umii;
 typedef pair<int, int> pii;
 typedef vector<pair<int, int>> vpii;
 
@@ -48,49 +47,43 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-vi find_mode(vi &v)
+vi myMerge(vi &a, vi &b)
 {
-    // create a freq map
-    umii freq_map;
-    vi mode;
-    for (int x : v)
+    // both a,b are sorted
+    // form c = a+b & c is sorted.
+    int m = a.size(), n = b.size();
+    vi c(m + n);
+    int i = 0, j = 0, k = 0;
+    while (i < m && j < n)
     {
-        freq_map[x]++;
-    }
-
-    // find the highest freq
-    int max_freq = 0;
-    for (auto [key, freq] : freq_map)
-    {
-        if (freq == max_freq)
+        if (a[i] < b[j])
         {
-            mode.push_back(key);
-            continue;
+            c[k++] = a[i++];
         }
-        if (freq > max_freq)
+        else
         {
-            max_freq = freq;
-            mode = {key};
+            c[k++] = b[j++];
         }
     }
-
-    // push modes
-    // umii::iterator itr;
-    // for (itr = freq_map.begin(); itr != freq_map.end(); itr++)
-    // {
-    //     if (max_freq == itr->second)
-    //     {
-    //         mode.push_back(itr->first);
-    //     }
-    // }
-    return mode;
+    while (i < m)
+    {
+        c[k++] = a[i++];
+    }
+    while (j < n)
+    {
+        c[k++] = b[j++];
+    }
+    return c;
 }
 
 void solve()
 {
-    vi v = input_vector();
-    vi mode = find_mode(v);
-    print_vec(mode);
+    vi a = input_vector();
+    vi b = input_vector();
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    vi c = myMerge(a, b);
+    print_vec(c);
 }
 
 int main()

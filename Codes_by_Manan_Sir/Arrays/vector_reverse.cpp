@@ -13,23 +13,12 @@ vector<int> input_vector()
     return v;
 }
 
-void rotate_vec(vector<int> &v)
+void reverse_vec(vector<int> &v)
 {
     int n = v.size();
-    int temp = v[n - 1];
-    for (int i = n - 2; i >= 0; i--)
+    for (int i = 0, j = n - 1; i < j; i++, j--)
     {
-        v[i + 1] = v[i];
-    }
-    v[0] = temp;
-}
-
-void rotate_vec2(vector<int> &v)
-{
-    int n = v.size();
-    for (int i = n - 2; i >= 0; i--)
-    {
-        swap(v[i + 1], v[i]);
+        swap(v[i], v[j]);
     }
 }
 
@@ -44,15 +33,13 @@ void print_vec(vector<int> &v)
     cout << "\n";
 }
 
-void solve()
+int main()
 {
     vector<int> v = input_vector();
 
-    rotate_vec2(v);
-    print_vec(v);
-}
+    // reverse
+    reverse_vec(v);
 
-int main()
-{
-    solve();
+    // print array
+    print_vec(v);
 }

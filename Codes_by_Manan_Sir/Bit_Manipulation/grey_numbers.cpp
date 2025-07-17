@@ -29,17 +29,17 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+bool grey_numbers(int a, int b)
+{
+    int c = a ^ b;
+    return !(c & (c - 1));
+}
+
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    int a, b;
+    cin >> a >> b;
+    cout << grey_numbers(a, b) << "\n";
 }
 
 int main()

@@ -29,17 +29,33 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+void insertion_sort(vi &v)
+{
+    int n = v.size();
+    for (int i = 1; i < v.size(); i++)
+    {
+        // int temp = v[i], j;
+        for (int j = i; j >= 1 && v[j] < v[j - 1]; j--)
+        {
+            swap(v[j], v[j - 1]);
+            // if (v[j] > v[j + 1])
+            // {
+            //     swap(v[j], v[j + 1]);
+            // }
+            // else
+            // {
+            //     break;
+            // }
+        }
+        // v[j + 1] = temp;
+    }
+}
+
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    vi v = input_vector();
+    insertion_sort(v);
+    print_vec(v);
 }
 
 int main()

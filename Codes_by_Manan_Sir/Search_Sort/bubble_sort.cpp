@@ -29,17 +29,26 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+void bubble_sort(vi &v)
+{
+    int n = v.size();
+    forn(i, n)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (v[i] > v[j])
+            {
+                swap(v[i], v[j]);
+            }
+        }
+    }
+}
+
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    vi v = input_vector();
+    bubble_sort(v);
+    print_vec(v);
 }
 
 int main()

@@ -6,7 +6,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<string> vs;
 typedef map<int, int> mii;
-typedef unordered_map<int, int> umii;
 typedef pair<int, int> pii;
 typedef vector<pair<int, int>> vpii;
 
@@ -48,49 +47,23 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-vi find_mode(vi &v)
+void print_n_1(int n)
 {
-    // create a freq map
-    umii freq_map;
-    vi mode;
-    for (int x : v)
+    //
+    if (n == 0)
     {
-        freq_map[x]++;
+        cout << endl;
+        return;
     }
-
-    // find the highest freq
-    int max_freq = 0;
-    for (auto [key, freq] : freq_map)
-    {
-        if (freq == max_freq)
-        {
-            mode.push_back(key);
-            continue;
-        }
-        if (freq > max_freq)
-        {
-            max_freq = freq;
-            mode = {key};
-        }
-    }
-
-    // push modes
-    // umii::iterator itr;
-    // for (itr = freq_map.begin(); itr != freq_map.end(); itr++)
-    // {
-    //     if (max_freq == itr->second)
-    //     {
-    //         mode.push_back(itr->first);
-    //     }
-    // }
-    return mode;
+    cout << n << "\t";
+    print_n_1(n - 1);
 }
 
 void solve()
 {
-    vi v = input_vector();
-    vi mode = find_mode(v);
-    print_vec(mode);
+    int n;
+    cin >> n;
+    print_n_1(n);
 }
 
 int main()

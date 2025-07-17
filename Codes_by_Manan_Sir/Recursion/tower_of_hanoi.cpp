@@ -35,7 +35,6 @@ int tower_of_hanoi(int n)
     {
         return 0;
     }
-    // return tower_of_hanoi(n - 1) + 1 + tower_of_hanoi(n - 1);
     return 2 * tower_of_hanoi(n - 1) + 1;
 }
 

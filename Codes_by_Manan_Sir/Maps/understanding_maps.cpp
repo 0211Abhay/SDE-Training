@@ -1,69 +1,98 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define forn(i, n) for (int i = 0; i < n; i++)
+
 vector<int> input_vector()
 {
     int n;
     cin >> n;
-
     vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    forn(i, n)
     {
         cin >> v[i];
     }
     return v;
 }
 
+void reverse_vec(vector<int> &v)
+{
+    int n = v.size();
+    for (int i = 0, j = n - 1; i < j; i++, j--)
+    {
+        swap(v[i], v[j]);
+    }
+}
+
 void print_vec(vector<int> &v)
 {
-    // for (int i = 0; i < v.size(); i++)
+    // int n = v.size();
+    // for (int i = 0; i < n; i++)
     // {
+    //     // cout << a[i] << "\t";
     //     cout << v[i] << "\t";
     // }
     for (int x : v)
     {
-        cout << x << " ";
+        cout << x << "\n";
     }
     cout << "\n";
 }
 
-void populate_increment(map<int, int> &m)
+void populate_map(map<int, int> &map1)
 {
-    m[1] = 2;
-    m[2] = 3;
-    m[0] = 1;
+    map1[2] = 3;
+    map1[0] = 1;
+    map1[1] = 2;
 }
 
-void print_map(map<int, int> &m)
+void print_map(map<int, int> &map1)
 {
     // Way 1
     // map<int, int>::iterator itr;
-    // for (itr = m.begin(); itr != m.end(); itr++)
+    // for (itr = map1.begin(); itr != map1.end(); itr++)
     // {
-    //     // pair<int, int> key_value = (*itr);
-    //     int key = itr->first; // (*itr).first
-    //     int value = itr->second;
+    //     pair<int, int> key_value = (*itr);
+    //     int key = key_value.first;
+    //     int value = key_value.second;
     //     cout << key << ": " << value << "\n";
     // }
 
     // Way 2
-    // for (pair<int, int> key_value : m)
+    // for (pair<int, int> key_value : map1)
     // {
-    //     cout << key_value.first << ": " << key_value.second << '\n';
+    //     int key = key_value.first;
+    //     int value = key_value.second;
+    //     cout << key << ": " << value << "\n";
     // }
 
-    for (auto [key, value] : m)
+    // Way 3
+    for (auto [key, value] : map1)
     {
         cout << key << ": " << value << "\n";
     }
 }
 
+void playing_with_maps()
+{
+    map<int, int> map1;
+    populate_map(map1);
+    print_map(map1);
+}
+
+void understanding_macros()
+{
+    // int n = 2;
+    forn(i, 3)
+    {
+        cout << "Hello World\n";
+    }
+}
+
 void solve()
 {
-    // vector<int> v = input_vector();
-    map<int, int> increment;
-    populate_increment(increment);
-    print_map(increment);
+    // playing_with_maps();
+    understanding_macros();
 }
 
 int main()

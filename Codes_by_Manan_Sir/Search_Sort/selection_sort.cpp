@@ -29,17 +29,27 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+void selection_sort(vi &v)
+{
+    forn(i, v.size() - 1)
+    {
+        int min_index = i;
+        for (int j = i + 1; j < v.size(); j++)
+        {
+            if (v[j] < v[min_index])
+            {
+                min_index = j;
+            }
+        }
+        swap(v[i], v[min_index]);
+    }
+}
+
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    vi v = input_vector();
+    selection_sort(v);
+    print_vec(v);
 }
 
 int main()

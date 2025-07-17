@@ -31,15 +31,11 @@ void print_vec(vi &v)
 
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    // char c1 = 9, c2 = '\t';
+    int a1 = 9; // character maths
+    char c1 = '9', c2 = '1';
+    a1 = 5;
+    cout << char(c2 + a1) << "\n";
 }
 
 int main()

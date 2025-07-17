@@ -7,6 +7,7 @@ typedef pair<int, int> pii;
 
 #define forn(i, n) for (int i = 0; i < n; i++)
 #define pb push_back
+#define all(x) x.begin(), x.end()
 
 vi input_vector()
 {
@@ -31,15 +32,9 @@ void print_vec(vi &v)
 
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    // code here
+    vi v({1, 2, 3, 4, 6});
+    cout << (*lower_bound(all(v), 3)) << '\n';
 }
 
 int main()

@@ -28,18 +28,23 @@ void print_vec(vi &v)
     }
     cout << "\n";
 }
+int b = 5;
+
+void fun(int b)
+{
+    if (b-- == 1)
+    {
+        return;
+    }
+    // cout << b-- << "\n";
+    fun(b);
+}
 
 void solve()
 {
-    // int a = 0, b = -1;
-    // bool x = ++a && ++b;
-    // cout << x << "\n";
-    // cout << a << "\t" << b << "\n";
-    int x = -1, y = -1;
-    // int z = 5, w = 6;
-    bool a = ++x || ++y;
-    bool b = x++ && y++;
-    cout << a << '\t' << b << "\t" << x << "\t" << y << "\n";
+    b = 10;
+    fun(b);
+    cout << b << "\n";
 }
 
 int main()

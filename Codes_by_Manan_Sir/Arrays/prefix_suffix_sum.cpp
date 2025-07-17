@@ -6,7 +6,6 @@ typedef long long ll;
 typedef vector<int> vi;
 typedef vector<string> vs;
 typedef map<int, int> mii;
-typedef unordered_map<int, int> umii;
 typedef pair<int, int> pii;
 typedef vector<pair<int, int>> vpii;
 
@@ -48,49 +47,38 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-vi find_mode(vi &v)
+vi get_prefix_vector(vi &v)
 {
-    // create a freq map
-    umii freq_map;
-    vi mode;
-    for (int x : v)
+    vi ans(v.size());
+    int sum = 0;
+    forn(i, v.size() - 1)
     {
-        freq_map[x]++;
+        // sum += v[i];
+        ans[i + 1] = ans[i] + v[i + 1];
     }
-
-    // find the highest freq
-    int max_freq = 0;
-    for (auto [key, freq] : freq_map)
-    {
-        if (freq == max_freq)
-        {
-            mode.push_back(key);
-            continue;
-        }
-        if (freq > max_freq)
-        {
-            max_freq = freq;
-            mode = {key};
-        }
-    }
-
-    // push modes
-    // umii::iterator itr;
-    // for (itr = freq_map.begin(); itr != freq_map.end(); itr++)
+    // ans[0] = v[0];
+    // for (int i = 1; i < v.size(); i++)
     // {
-    //     if (max_freq == itr->second)
-    //     {
-    //         mode.push_back(itr->first);
-    //     }
+    //     // sum += v[i];
+    //     ans[i] = ans[i - 1] + v[i];
     // }
-    return mode;
+    return ans;
+}
+
+void make_prefix_vector(vi &v)
+{
+    forn(i, v.size() - 1)
+    {
+        v[i + 1] += v[i];
+    }
 }
 
 void solve()
 {
     vi v = input_vector();
-    vi mode = find_mode(v);
-    print_vec(mode);
+    // vi prefix = get_prefix_vector(v);
+    make_prefix_vector(v);
+    print_vec(v);
 }
 
 int main()
