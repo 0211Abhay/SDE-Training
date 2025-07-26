@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef vector<int> vi;
 typedef vector<string> vs;
+typedef vector<int> vi;
 typedef unordered_map<string, vs> umsvs;
-typedef pair<string, vs> psvs;
 
-vi input_vector()
+vector<int> input_vector()
 {
     int n;
     cin >> n;
-    vi v(n);
+
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
     {
         cin >> v[i];
@@ -18,28 +18,26 @@ vi input_vector()
     return v;
 }
 
-void print_vec(vi &v)
+void print_vec(vector<int> &v)
 {
-    // int n = v.size();
-    // for (int i = 0; i < n; i++)
+    // for (int i = 0; i < v.size(); i++)
     // {
-    //     // cout << a[i] << "\t";
     //     cout << v[i] << "\t";
     // }
     for (int x : v)
     {
-        cout << x << "\n";
+        cout << x << " ";
     }
     cout << "\n";
 }
 
 void populate_crush_map(umsvs &crush_map)
 {
-    crush_map["Sonu"] = {"Jeet"};
-    crush_map["Harsh"] = {"Anjali", "Sneha", "Nishi"};
-    crush_map["Krupali"] = {"Jeet", "Aditya"};
-    crush_map["Mihir"] = {"Sneha", "Aditya"};
-    crush_map["Yasin"] = {"Nishi"};
+    crush_map["Kishan"] = {"Nirali"};
+    crush_map["Jay"] = {"Abhi"};
+    crush_map["Vivek"] = {"Ruhee"};
+    crush_map["Nidhi"] = {"Abhi"};
+    crush_map["Akshay"] = {"Diya", "Nirali", "Tanvi"};
 }
 
 void print_crush_list(vs &crush_list)
@@ -51,28 +49,24 @@ void print_crush_list(vs &crush_list)
     cout << "\n";
 }
 
-void print_map(umsvs &crush_map)
+void print_crush_map(umsvs &crush_map)
 {
-    // Way 3
-    for (psvs key_value : crush_map)
+    umsvs::iterator itr;
+    for (itr = crush_map.begin(); itr != crush_map.end(); itr++)
     {
-        string student = key_value.first;
-        vs crush_list = key_value.second;
-        cout << student << ": ";
-        print_crush_list(crush_list);
+        // string student = itr->first;
+        // vs crush_list = itr->second;
+        cout << itr->first << ": ";
+        print_crush_list(itr->second);
     }
-}
-
-void playing_with_maps()
-{
-    umsvs crush_map;
-    populate_crush_map(crush_map);
-    print_map(crush_map);
 }
 
 void solve()
 {
-    playing_with_maps();
+    // vector<int> v = input_vector();
+    umsvs crush_map;
+    populate_crush_map(crush_map);
+    print_crush_map(crush_map);
 }
 
 int main()

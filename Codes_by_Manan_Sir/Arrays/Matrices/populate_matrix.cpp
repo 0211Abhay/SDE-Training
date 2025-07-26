@@ -30,31 +30,25 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-void populate_matrix_horizontally(vvi &v)
+void populate_matrix(vvi &v)
 {
-    int m = v.size(), n = v[0].size();
-    int val = 1;
-    forn(i, m)
-    {
-        forn(j, n)
-        {
-            v[i][j] = val++;
-        }
-    }
-}
-
-void populate_matrix_vertically(vvi v)
-{
-    //
-}
-
-void print_matrix(vvi &v)
-{
+    // int count = 1;
     forn(i, v.size())
     {
         forn(j, v[0].size())
         {
-            cout << v[i][j] << "\t";
+            v[i][j] = i * v[0].size() + j + 1;
+        }
+    }
+}
+
+void print_vvi(vvi &v)
+{
+    for (vi &row : v)
+    {
+        for (int &x : row)
+        {
+            cout << x << "\t";
         }
         cout << "\n";
     }
@@ -63,18 +57,10 @@ void print_matrix(vvi &v)
 void solve()
 {
     int m, n;
-    char type;
-    cin >> m >> n >> type;
+    cin >> m >> n;
     vvi v(m, vi(n));
-    if (type == 'H')
-    {
-        populate_matrix_horizontally(v);
-    }
-    else if (type == 'V')
-    {
-        populate_matrix_vertically(v);
-    }
-    print_matrix(v);
+    populate_matrix(v);
+    print_vvi(v);
 }
 
 int main()

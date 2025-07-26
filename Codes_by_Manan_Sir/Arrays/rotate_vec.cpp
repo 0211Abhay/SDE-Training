@@ -5,6 +5,7 @@ vector<int> input_vector()
 {
     int n;
     cin >> n;
+
     vector<int> v(n);
     for (int i = 0; i < n; i++)
     {
@@ -13,7 +14,7 @@ vector<int> input_vector()
     return v;
 }
 
-void rotate_vec(vector<int> &v)
+void rotate_vector(vector<int> &v)
 {
     int n = v.size();
     int temp = v[n - 1];
@@ -24,21 +25,10 @@ void rotate_vec(vector<int> &v)
     v[0] = temp;
 }
 
-void rotate_vec2(vector<int> &v)
-{
-    int n = v.size();
-    for (int i = n - 2; i >= 0; i--)
-    {
-        swap(v[i + 1], v[i]);
-    }
-}
-
 void print_vec(vector<int> &v)
 {
-    int n = v.size();
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < v.size(); i++)
     {
-        // cout << a[i] << "\t";
         cout << v[i] << "\t";
     }
     cout << "\n";
@@ -47,8 +37,7 @@ void print_vec(vector<int> &v)
 void solve()
 {
     vector<int> v = input_vector();
-
-    rotate_vec2(v);
+    rotate_vector(v);
     print_vec(v);
 }
 
