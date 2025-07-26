@@ -29,25 +29,30 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
-double get_deviation(int n, double guess)
+double get_deviation(int n, double root)
 {
-    double est = guess * guess;
+    double est = root * root;
     double diff = abs(n - est);
     double perc_diff = diff / n * 100;
     return perc_diff;
 }
 
-double my_sqrt(int n)
+double helper(int n, double guess)
 {
-    double guess = 1;
-    while (get_deviation(n, guess) >= 0.0001)
+    while (get_deviation(n, guess) >= 0.01)
     {
         double div = n / guess;
-        double avg = (guess + div) / 2;
-        cout << guess << "\t" << div << "\t" << avg << "\n";
+        cout << guess << "\t" << div << "\n";
+        double avg = (guess + div) / 2.0;
         guess = avg;
     }
     return guess;
+}
+
+double my_sqrt(int n)
+{
+    double guess = 1;
+    return helper(n, guess);
 }
 
 void solve()
@@ -55,7 +60,6 @@ void solve()
     int n;
     cin >> n;
     cout << my_sqrt(n) << "\n";
-    // cout << get_deviation(102, 10) << "\n";
 }
 
 int main()

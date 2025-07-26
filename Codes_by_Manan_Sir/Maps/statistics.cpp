@@ -1,38 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
-// using namespace std::chrono;
 
-typedef long long ll;
 typedef vector<int> vi;
-typedef vector<string> vs;
-typedef map<int, int> mii;
 typedef unordered_map<int, int> umii;
-typedef pair<int, int> pii;
-typedef vector<pair<int, int>> vpii;
-
-#define fastIO                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(NULL);                    \
-    cout.tie(NULL)
-#define flf(i, a, b) for (int i = a; i < b; i++)
-#define flb(i, a, b) for (int i = a; i > b; i--)
-#define takeInt(n) \
-    int n;         \
-    cin >> n
-#define forn(i, n) flf(i, 0, n)
-#define pb push_back
-#define mp make_pair
-#define all(v) v.begin(), v.end()
-
-const int MOD = 1e9 + 7;
-const long long INF = 1e18;
 
 vi input_vector()
 {
     int n;
     cin >> n;
+
     vi v(n);
-    forn(i, n)
+    for (int i = 0; i < n; i++)
     {
         cin >> v[i];
     }
@@ -41,48 +19,58 @@ vi input_vector()
 
 void print_vec(vi &v)
 {
-    forn(i, v.size())
+    for (int x : v)
     {
-        cout << v[i] << " ";
+        cout << x << " ";
     }
     cout << "\n";
 }
 
-vi find_mode(vi &v)
+void print_freq_map(umii &freq_map)
 {
-    // create a freq map
-    umii freq_map;
+    for (pair<int, int> key_value : freq_map)
+    {
+        cout << key_value.first << ": " << key_value.second << "\n";
+    }
+}
+
+vi find_mode(vi &v) // O(n + 2m) ~ O(n), k=3
+{
     vi mode;
-    for (int x : v)
+    // create freq map
+    umii freq_map;
+    for (int x : v) // O(n)
     {
         freq_map[x]++;
     }
 
     // find the highest freq
     int max_freq = 0;
-    for (auto [key, freq] : freq_map)
+    for (auto [key, freq] : freq_map) // O (m)
     {
-        if (freq == max_freq)
+        if (freq < max_freq)
         {
-            mode.push_back(key);
             continue;
         }
         if (freq > max_freq)
         {
             max_freq = freq;
-            mode = {key};
+            mode = vi();
         }
+        mode.push_back(key);
     }
 
-    // push modes
-    // umii::iterator itr;
-    // for (itr = freq_map.begin(); itr != freq_map.end(); itr++)
+    // push the highest freq key to mode vi
+    // for (auto [key, freq] : freq_map) // O(m)
     // {
-    //     if (max_freq == itr->second)
+    //     if (freq == max_freq)
     //     {
-    //         mode.push_back(itr->first);
+    //         mode.push_back(key);
     //     }
     // }
+
+    // print_freq_map(freq_map);
+    // add all elements to mode vi with highest freq
     return mode;
 }
 
@@ -95,15 +83,5 @@ void solve()
 
 int main()
 {
-    fastIO;
-    int t = 1;
-    // cin >> t;
-    while (t--)
-    {
-        solve();
-    }
-    // auto start = high_resolution_clock::now();
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<nanoseconds>(stop - start);
-    // cout << duration.count() << "\n";
+    solve();
 }

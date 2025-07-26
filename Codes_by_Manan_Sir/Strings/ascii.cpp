@@ -31,11 +31,9 @@ void print_vec(vi &v)
 
 void solve()
 {
-    // char c1 = 9, c2 = '\t';
-    int a1 = 9; // character maths
-    char c1 = '9', c2 = '1';
-    a1 = 5;
-    cout << char(c2 + a1) << "\n";
+    char c = 'c' + 2;
+    int a = 'a' + 'b';
+    cout << char(a) << "\n";
 }
 
 int main()
