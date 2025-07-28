@@ -38,13 +38,6 @@ void print_vvi(vvi &memo)
     }
 }
 
-int nCr_loop(int n, int r)
-{
-    // loop from right for both numerator and denominator
-    // for advanced code, do via modulo inverse
-    return 1;
-}
-
 int nCr_recursive(int n, int r)
 {
     r = min(r, n - r);
@@ -151,20 +144,66 @@ int nCr_space_optimised(int n, int r)
             // int upper_term = (j < i) ? prev[j] : 1;
             curr[j] = upper_term + prev[j - 1];
         }
-        cout << "i: " << i << ";\n";
-        print_vec(prev);
-        print_vec(curr);
-        cout << "\n";
+        // cout << "i: " << i << ";\n";
+        // print_vec(prev);
+        // print_vec(curr);
+        // cout << "\n";
         prev = curr;
     }
-    return (prev[r] + prev[r - 1]);
+    return (n != 2 * r) ? (prev[r] + prev[r - 1]) : 2 * prev[r - 1];
+}
+
+unsigned int nCr_looping(unsigned int n, unsigned int r)
+{
+    r = min(r, n - r);
+    unsigned int ans = 1, ans2 = 1;
+    // for (int i = n; i >= n - r + 1; i--)
+    // {
+    //     ans = (ans * i) / (n + 1 - i);
+    //     cout << ans << '\n';
+    // }
+    for (unsigned int i = 1; i <= r; i++)
+    {
+        if (ans2 % i == 0)
+        {
+            ans2 /= i;
+            ans2 *= (n - r + i);
+        }
+        else if ((n - r + i) % i == 0)
+        {
+            int val = (n - r + i) / i;
+            ans2 *= val;
+        }
+        else
+        {
+            int gcd_temp = __gcd((n - r + i), i);
+            i /= gcd_temp;
+            ans2 /= i;
+            ans2 *= ((n - r + i) / gcd_temp);
+            // ans2 = (ans2 * (n - r + i)) / (i);
+        }
+        // cout << ans2 << '\t';
+    }
+    // cout << "\n";
+    return ans2;
+}
+
+void edge_looping()
+{
+    forn(i, 100)
+    {
+        int val = (i + 1);
+        cout << val << "\t" << nCr_looping(2 * val, val) << "\n";
+        // cout << nCr_tabulation(2 * val, val) << '\n';
+    }
 }
 
 void solve()
 {
-    int n, r;
-    cin >> n >> r;
-    cout << nCr_space_optimised(n, r) << "\n";
+    // int n, r;
+    // cin >> n >> r;
+    // cout << nCr_looping(n, r) << "\n";
+    edge_looping();
 }
 
 int main()
