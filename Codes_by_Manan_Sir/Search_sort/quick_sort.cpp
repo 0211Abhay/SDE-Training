@@ -31,14 +31,11 @@ void print_vec(vi &v)
 
 int partition(vi &v, int l, int r)
 {
-    // choose pivot, bring smaller elements to left
-    // bring bigger elements to right
-    // return index of pivot
-
     int pivot = v[l], pi = l;
     int i = l + 1, j = r;
     while (i <= j)
     {
+        // cout << i << "\t" << j << "\n";
         while (i < r && v[i] <= pivot)
         {
             i++;
@@ -58,7 +55,7 @@ int partition(vi &v, int l, int r)
 
 void quick_sort(vi &v, int l, int r)
 {
-    while (l >= r)
+    if (l >= r)
     {
         return;
     }
@@ -72,6 +69,9 @@ void solve()
     vi v = input_vector();
     quick_sort(v, 0, v.size() - 1);
     print_vec(v);
+    // int pi = partition(v, 0, v.size() - 1);
+    // print_vec(v);
+    // cout << pi << "\n";
 }
 
 int main()

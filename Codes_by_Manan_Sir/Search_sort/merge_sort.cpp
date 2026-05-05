@@ -45,14 +45,20 @@ vi merge(vi &a, vi &b)
             c[k++] = b[j++];
         }
     }
-    while (i < m)
-    {
-        c[k++] = a[i++];
-    }
+    // if (i == m)
+    // {
     while (j < n)
     {
         c[k++] = b[j++];
     }
+    // }
+    // if (j == n)
+    // {
+    while (i < m)
+    {
+        c[k++] = a[i++];
+    }
+    // }
     return c;
 }
 

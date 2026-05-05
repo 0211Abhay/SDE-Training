@@ -29,9 +29,65 @@ void print_vec(vi &v)
     cout << "\n";
 }
 
+bool helper(vi &v, int x, int l, int r)
+{
+    if (l > r)
+    {
+        return false;
+    }
+    int mid = (l + r) / 2;
+    if (v[mid] == x)
+    {
+        return true;
+    }
+    if (v[mid] < x)
+    {
+        return helper(v, x, mid + 1, r);
+    }
+    return helper(v, x, l, mid - 1);
+}
+
+bool my_binary_search(vi &v, int x)
+{
+    return helper(v, x, 0, v.size() - 1);
+}
+
+bool binary_search_iteration(vi &v, int x)
+{
+    int l = 0, r = v.size() - 1;
+    while (l <= r)
+    {
+        int mid = l + (r - l) / 2;
+        if (v[mid] == x)
+        {
+            return true;
+        }
+        if (v[mid] < x)
+        {
+            l = mid + 1;
+        }
+        else
+        {
+            r = mid - 1;
+        }
+    }
+    return false;
+}
+
+void built_in_functions()
+{
+    vi v({1, 2, 4, 5});
+    cout << *lower_bound(v.begin(), v.end(), 3) << "\n";
+}
+
 void solve()
 {
-    // code here
+    // vi v = input_vector();
+    // sort(v.begin(), v.end());
+    // int x;
+    // cin >> x;
+    // cout << binary_search_iteration(v, x) << "\n";
+    built_in_functions();
 }
 
 int main()
